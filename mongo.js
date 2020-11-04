@@ -23,17 +23,17 @@ const person = new Person({
   number:  process.argv[4],
 })
 
-person.save().then(result => {
+person.save().then(() => {
   console.log(`added ${person.name} number ${person.number} to phonebook`)
   mongoose.connection.close()
 })
 
 Person
   .find({})
-  .then(persons=> {
+  .then(persons => {
     console.log('phonebook :')
     persons.forEach(person => {
-        console.log(person.name +' '+ person.number)
-      })
+      console.log(person.name +' '+ person.number)
+    })
     mongoose.connection.close()
   })
